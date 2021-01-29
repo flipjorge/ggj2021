@@ -3,8 +3,8 @@ public class PlayerFSM : FSM<Player>
     #region Constructor
     public PlayerFSM(Player owner) : base(owner)
     {
-        this._createStates();
-        this._connectStates();
+        _createStates();
+        _connectStates();
     }
     #endregion
 
