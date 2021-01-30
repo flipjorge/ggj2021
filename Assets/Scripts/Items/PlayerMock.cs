@@ -59,9 +59,9 @@ public class PlayerMock : MonoBehaviour
     //NOTE: Important stuff
     private void CheckFirstItemOwnership(GameObject gameObject)
     {
-        if(playerTrail.LeaderTrail.Count > 0)
+        if (playerTrail.LeaderTrail.Count > 0)
         {
-            GameObject owner = playerTrail.LeaderTrail[0].GetComponent<Item>().GetOwner();
+            GameObject owner = playerTrail.LeaderTrail[0].GetComponent<Item>().owner;
             if (gameObject.Equals(owner))
             {
                 print("Oh thanks for finding this!");

@@ -11,6 +11,12 @@ public class PlayerTrail : MonoBehaviour
         LeaderTrail = new List<GameObject>();
     }
 
+    public void addItem(Item item)
+    {
+        LeaderTrail.Add(item.gameObject);
+        item.startFollowing(this);
+    }
+
     public void destroyFirst()
     {
         if (LeaderTrail.Count > 0)
@@ -19,5 +25,16 @@ public class PlayerTrail : MonoBehaviour
             LeaderTrail.RemoveAt(0);
             Destroy(first);
         }
+    }
+
+    public bool isFirstItemFrom(GameObject npc)
+    {
+        if (LeaderTrail.Count > 0)
+        {
+            GameObject owner = LeaderTrail[0].GetComponent<Item>().owner;
+            return npc.Equals(owner);
+        }
+
+        return false;
     }
 }

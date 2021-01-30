@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        trail = GetComponentInChildren<PlayerTrail>();
 
         fsm = new PlayerFSM(this);
     }
@@ -34,6 +35,11 @@ public class Player : MonoBehaviour
     {
         fsm.currentState.FixedUpdate();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        fsm.currentState.OnCollisionEnter(collision);
+    }
     #endregion
 
     #region FSM
@@ -52,5 +58,9 @@ public class Player : MonoBehaviour
     #region Movement
     public float velocity = 1;
     [HideInInspector] public Vector3 movementDirection;
+    #endregion
+
+    #region Trail
+    [HideInInspector] public PlayerTrail trail;
     #endregion
 }

@@ -25,6 +25,6 @@ public class NPCMock : MonoBehaviour
     {
         item.transform.position = gameObject.transform.position;
         Instantiate(item);
-        item.GetComponent<Item>().SetOwner(gameObject);
+        item.GetComponent<Item>().owner = gameObject;
     }
 }
