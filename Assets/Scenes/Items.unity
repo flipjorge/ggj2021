@@ -635,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b699f5a217f345ac8c4850144c743c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 886268678948139578, guid: 72b488608f2460c41ac37e79b06e4a38, type: 3}
+  itemPrefab: {fileID: 886268678948139578, guid: 72b488608f2460c41ac37e79b06e4a38, type: 3}
 --- !u!54 &1195752876
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -852,6 +852,10 @@ PrefabInstance:
     - target: {fileID: 7985806468908470922, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666252819685968911, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
+      propertyPath: velocity
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
