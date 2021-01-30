@@ -8,7 +8,9 @@ public class CrowdSystem : MonoBehaviour
     private CrowdUnit crowdUnitPrefab;
 
     public CrowdSpawnPoint[] spawnPoints;
-    
+
+    public Bounds playableArea;
+
     private void Awake()
     {
         spawnPoints = FindObjectsOfType<CrowdSpawnPoint>();
@@ -27,5 +29,12 @@ public class CrowdSystem : MonoBehaviour
         var spawnPoint = spawnPoints.PickRandom();
 
         CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity);
+
+        unit.SetPlayableArea(playableArea);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawCube(playableArea.center, playableArea.size);
     }
 }
