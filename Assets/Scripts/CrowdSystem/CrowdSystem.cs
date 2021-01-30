@@ -7,6 +7,9 @@ public class CrowdSystem : MonoBehaviour
     [SerializeField]
     private CrowdUnit crowdUnitPrefab;
 
+    [SerializeField]
+    private CrowdSettings crowdSettings;
+    
     public CrowdSpawnPoint[] spawnPoints;
 
     public Bounds playableArea;
@@ -28,9 +31,11 @@ public class CrowdSystem : MonoBehaviour
     {
         var spawnPoint = spawnPoints.PickRandom();
 
+        var behavior = crowdSettings.unitBehaviors.PickRandom();
+        
         CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity);
 
-        unit.Setup(playableArea, spawnPoints);
+        unit.Setup(playableArea, spawnPoints, behavior);
     }
 
     private void OnDrawGizmosSelected()

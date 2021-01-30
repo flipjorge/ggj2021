@@ -133,3 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkableSurface: {fileID: 11400000, guid: 94475678b42f544a8b5fc2596e54993e, type: 2}
+  unitBehavior:
+    chanceOfCheckingStore: 0
+    stopsAtDestinationBeforeContinue: 0
+    intervalBetweenDestinationChange: 0
+    lifeSpan: 0
+    unitSpeed: 0

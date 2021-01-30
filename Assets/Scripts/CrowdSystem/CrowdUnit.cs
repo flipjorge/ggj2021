@@ -10,14 +10,16 @@ public class CrowdUnit : MonoBehaviour
     private NavMeshSurfaceReference walkableSurface;
 
     [SerializeField]
-    private float lifeSpan = 15f;
+    private UnitBehavior unitBehavior;
 
     private NavMeshAgent agent;
 
     private Bounds playableArea;
 
     private CrowdSpawnPoint[] spawnPoints;
-    
+
+    private Coroutine routine;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -27,39 +29,69 @@ public class CrowdUnit : MonoBehaviour
     {
         agent.destination = walkableSurface.Value.center;
 
-        var routine = StartCoroutine(WalkAroundEnumerator());
+        routine = StartCoroutine(WalkAroundEnumerator());
     }
 
-    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints)
+    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior)
     {
         this.spawnPoints = spawnPoints;
         this.playableArea = playableArea;
-    }
+        this.unitBehavior = unitBehavior;
 
+        agent.speed = unitBehavior.unitSpeed;
+    }
 
     private WaitForSeconds Wait(float seconds) => new WaitForSeconds(seconds);
 
     private IEnumerator WalkAroundEnumerator()
     {
-        WaitForSeconds waitForSeconds = new WaitForSeconds(2f);
         yield return Wait(3);
 
         DateTime timePassed = DateTime.UtcNow;
-        DateTime maxTime = timePassed.AddSeconds(lifeSpan);
+        DateTime maxTime = timePassed.AddSeconds(unitBehavior.lifeSpan);
         while (DateTime.UtcNow < maxTime)
         {
             agent.destination = PickRandomPositionInsidePlayableAre();
-            yield return Wait(4f);
+
+            if (unitBehavior.stopsAtDestinationBeforeContinue)
+            {
+                while (!HasArrivedToDestination())
+                {
+                    yield return null;
+                }
+            }
+
+            yield return Wait(unitBehavior.intervalBetweenDestinationChange);
         }
 
         agent.destination = spawnPoints.PickRandom().transform.position;
+
+        while (!HasArrivedToDestination())
+        {
+            yield return null;
+        }
+
+        //unit left the building
+
+        Destroy(this.gameObject);
+    }
+
+    private bool HasArrivedToDestination()
+    {
+        float dist = Vector3.Distance(agent.transform.position, agent.destination);
+        return (dist <= 1.5f);
     }
 
     private Vector3 PickRandomPositionInsidePlayableAre()
     {
         float x = playableArea.center.x + Random.Range(-playableArea.extents.x, playableArea.extents.x);
         float z = playableArea.center.z + Random.Range(-playableArea.extents.z, playableArea.extents.z);
-        
+
         return new Vector3(x, 0, z);
+    }
+
+    private void OnDestroy()
+    {
+        StopCoroutine(routine);
     }
 }
