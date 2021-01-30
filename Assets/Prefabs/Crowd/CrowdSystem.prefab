@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crowdUnitPrefab: {fileID: -7399345178954541422, guid: dc1c1d15d80d24c63b8234dfa88722ac, type: 3}
+  crowdSettings: {fileID: 11400000, guid: fd952a5b4d69b4fb18f1c5133f475c36, type: 2}
+  spawnPoints: []
+  playableArea:
+    m_Center: {x: 1.8, y: 0, z: -13.6}
+    m_Extent: {x: 29.93, y: 3.2, z: 34.6}

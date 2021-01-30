@@ -1,24 +1,33 @@
+using System.Net;
 using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public GameObject owner;
+    [HideInInspector] public GameObject owner;
+    public Sprite[] sprites;
 
     private PlayerTrail playerTrail;
     private Transform target;
     private bool followingTarget;
+    private SpriteRenderer spriteRenderer;
 
     #region Lifecycle
+    private void Awake()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
+
     void Start()
     {
-        followingTarget = false;
+        var randomItemIndex = Random.Range(0, sprites.Length - 1);
+        spriteRenderer.sprite = sprites[randomItemIndex];
     }
 
     private void FixedUpdate()
     {
         if (target != null && followingTarget)
         {
-            float followSharpness = 0.1f;
+            float followSharpness = 0.3f;
             float offsetFloat = 2f;
             Vector3 offset = target.right * offsetFloat;
             transform.rotation = Quaternion.LookRotation(-target.right, transform.up) * Quaternion.Euler(new Vector3(0, 90, 0));
@@ -39,6 +48,14 @@ public class Item : MonoBehaviour
                 target = playerTrail.LeaderTrail[playerTrail.LeaderTrail.IndexOf(gameObject) - 1].transform;
             }
         }
+    }
+    #endregion
+
+    #region Drop
+    public void drop(GameObject owner)
+    {
+        this.owner = owner;
+        transform.position = owner.transform.position;
     }
     #endregion
 
