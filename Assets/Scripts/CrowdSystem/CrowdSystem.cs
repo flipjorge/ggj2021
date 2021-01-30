@@ -30,7 +30,7 @@ public class CrowdSystem : MonoBehaviour
 
         CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity);
 
-        unit.SetPlayableArea(playableArea);
+        unit.Setup(playableArea, spawnPoints);
     }
 
     private void OnDrawGizmosSelected()
