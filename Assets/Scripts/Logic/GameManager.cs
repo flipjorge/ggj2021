@@ -1,29 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
 
-public enum GameState { NullState, Intro, MainMenu, InGame }
+public enum GameState { NullState, Intro, Menu, InGame, GameOver }
 
 public class GameManager : Singleton<GameManager>
 {
     private GameState currentGameState;
-    public UnityEvent OnGameStateChanged;
+    public UnityEvent<GameState> OnGameStateChanged;
 
-    public ObjectFinderService ofs;
+    //public ObjectFinderService ofs;
 
     public int SessionTimeInSeconds;
 
     void Start()
     {
-        Initialize();
+        GameManager.Instance.Initialize();
     }
 
-    private void Initialize()
+    public void Initialize()
     {
-        ofs = new ObjectFinderService();
-        currentGameState = GameState.Intro;
+        //ofs = new ObjectFinderService();
+        GameManager.Instance.SetGameState(GameState.Intro);
     }
 
     public void SetGameState(GameState gameState)
@@ -31,7 +27,7 @@ public class GameManager : Singleton<GameManager>
         this.currentGameState = gameState;
         if (OnGameStateChanged != null)
         {
-            OnGameStateChanged?.Invoke();
+            OnGameStateChanged?.Invoke(gameState);
         }
     }
 
