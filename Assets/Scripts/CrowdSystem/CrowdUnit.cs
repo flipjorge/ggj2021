@@ -25,9 +25,16 @@ public class CrowdUnit : MonoBehaviour
 
     private Item droppedItem;
 
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public new Rigidbody rigidbody;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        rigidbody = GetComponent<Rigidbody>();
     }
 
     private void Start()
@@ -35,6 +42,22 @@ public class CrowdUnit : MonoBehaviour
         agent.destination = walkableSurface.Value.center;
 
         routine = StartCoroutine(WalkAroundEnumerator());
+    }
+
+    private void Update()
+    {
+        //set animator velocity parameter
+        animator.SetFloat("velocity", agent.velocity.magnitude);
+
+        //set sprite direction
+        if (!spriteRenderer.flipX && agent.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (spriteRenderer.flipX && agent.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
     public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior)
