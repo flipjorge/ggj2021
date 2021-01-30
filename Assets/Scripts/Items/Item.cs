@@ -2,16 +2,24 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public GameObject owner;
+    [HideInInspector] public GameObject owner;
+    public Sprite[] sprites;
 
     private PlayerTrail playerTrail;
     private Transform target;
     private bool followingTarget;
+    private SpriteRenderer spriteRenderer;
 
     #region Lifecycle
+    private void Awake()
+    {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+    }
+
     void Start()
     {
-        followingTarget = false;
+        var randomItemIndex = Random.Range(0, sprites.Length - 1);
+        spriteRenderer.sprite = sprites[randomItemIndex];
     }
 
     private void FixedUpdate()
