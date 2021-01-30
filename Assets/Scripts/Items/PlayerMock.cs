@@ -40,7 +40,7 @@ public class PlayerMock : MonoBehaviour
         // Destroy First Item
         if (Input.GetButtonDown("Jump"))
         {
-            playerTrail.destroyFirst();
+            playerTrail.deliverFirst();
         }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -65,7 +65,7 @@ public class PlayerMock : MonoBehaviour
             if (gameObject.Equals(owner))
             {
                 print("Oh thanks for finding this!");
-                playerTrail.destroyFirst();
+                playerTrail.deliverFirst();
             }
         }
     }

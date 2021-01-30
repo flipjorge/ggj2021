@@ -128,5 +128,10 @@ public class CrowdUnit : MonoBehaviour
     private void OnDestroy()
     {
         StopCoroutine(routine);
+
+        if(droppedItem != null)
+        {
+            droppedItem.GetComponent<Item>().ownerLeaving();
+        }
     }
 }
