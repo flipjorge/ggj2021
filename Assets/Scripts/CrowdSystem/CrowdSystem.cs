@@ -1,15 +1,13 @@
-using System;
 using UnityEngine;
 
 public class CrowdSystem : MonoBehaviour
 {
-
     [SerializeField]
     private CrowdUnit crowdUnitPrefab;
 
     [SerializeField]
     private CrowdSettings crowdSettings;
-    
+
     public CrowdSpawnPoint[] spawnPoints;
 
     public Bounds playableArea;
@@ -32,8 +30,9 @@ public class CrowdSystem : MonoBehaviour
         var spawnPoint = spawnPoints.PickRandom();
 
         var behavior = crowdSettings.unitBehaviors.PickRandom();
-        
-        CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity);
+
+        CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity,
+            this.transform);
 
         unit.Setup(playableArea, spawnPoints, behavior);
     }
