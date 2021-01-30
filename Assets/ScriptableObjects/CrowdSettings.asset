@@ -19,8 +19,10 @@ MonoBehaviour:
     intervalBetweenDestinationChange: 5
     lifeSpan: 10
     unitSpeed: 6.5
+    chanceOfDroppingItem: 0.9
   - chanceOfCheckingStore: 0.5
     stopsAtDestinationBeforeContinue: 0
     intervalBetweenDestinationChange: 5
     lifeSpan: 20
     unitSpeed: 3.5
+    chanceOfDroppingItem: 0.6

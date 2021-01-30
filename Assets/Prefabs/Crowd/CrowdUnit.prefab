@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f848d0734b35c4df2b326098d763e2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 886268678948139719, guid: 72b488608f2460c41ac37e79b06e4a38, type: 3}
   walkableSurface: {fileID: 11400000, guid: 94475678b42f544a8b5fc2596e54993e, type: 2}
   unitBehavior:
     chanceOfCheckingStore: 0
@@ -139,3 +140,4 @@ MonoBehaviour:
     intervalBetweenDestinationChange: 0
     lifeSpan: 0
     unitSpeed: 0
+    chanceOfDroppingItem: 0

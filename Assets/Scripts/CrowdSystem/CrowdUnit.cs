@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 public class CrowdUnit : MonoBehaviour
 {
     [SerializeField]
+    private Item itemPrefab;
+
+    [SerializeField]
     private NavMeshSurfaceReference walkableSurface;
 
     [SerializeField]
@@ -19,6 +22,8 @@ public class CrowdUnit : MonoBehaviour
     private CrowdSpawnPoint[] spawnPoints;
 
     private Coroutine routine;
+
+    private Item droppedItem;
 
     private void Awake()
     {
@@ -45,13 +50,20 @@ public class CrowdUnit : MonoBehaviour
 
     private IEnumerator WalkAroundEnumerator()
     {
-        yield return Wait(3);
+        yield return Wait(6);
 
         DateTime timePassed = DateTime.UtcNow;
         DateTime maxTime = timePassed.AddSeconds(unitBehavior.lifeSpan);
         while (DateTime.UtcNow < maxTime)
         {
             agent.destination = PickRandomPositionInsidePlayableAre();
+
+            var random = Random.Range(0f, 1f);
+            if (random < unitBehavior.chanceOfDroppingItem && droppedItem == null)
+            {
+                droppedItem = Instantiate<Item>(itemPrefab);
+                droppedItem.drop(gameObject);
+            }
 
             if (unitBehavior.stopsAtDestinationBeforeContinue)
             {

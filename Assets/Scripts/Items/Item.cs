@@ -55,7 +55,7 @@ public class Item : MonoBehaviour
     public void drop(GameObject owner)
     {
         this.owner = owner;
-        transform.position = owner.transform.position;
+        transform.position = new Vector3(owner.transform.position.x, 0, owner.transform.position.z);
     }
     #endregion
 

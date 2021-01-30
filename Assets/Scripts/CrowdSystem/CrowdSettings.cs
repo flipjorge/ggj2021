@@ -30,4 +30,6 @@ public struct UnitBehavior
     public float lifeSpan;
 
     public float unitSpeed;
+
+    public float chanceOfDroppingItem;
 }
