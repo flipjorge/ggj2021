@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        trail = GetComponentInChildren<PlayerTrail>();
 
         fsm = new PlayerFSM(this);
     }
@@ -26,13 +27,26 @@ public class Player : MonoBehaviour
         animator.SetFloat("velocity", rigidbody.velocity.magnitude);
 
         //set sprite direction
-        if (spriteRenderer.flipX && movementDirection.x < 0) spriteRenderer.flipX = false;
-        else if (!spriteRenderer.flipX && movementDirection.x > 0) spriteRenderer.flipX = true;
+        if (spriteRenderer.flipX && movementDirection.x < 0)
+        {
+            spriteRenderer.flipX = false;
+            trail.transform.localRotation = Quaternion.AngleAxis(180f, trail.transform.up);
+        }
+        else if (!spriteRenderer.flipX && movementDirection.x > 0)
+        {
+            spriteRenderer.flipX = true;
+            trail.transform.localRotation = Quaternion.AngleAxis(0f, trail.transform.up);
+        }
     }
 
     private void FixedUpdate()
     {
         fsm.currentState.FixedUpdate();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        fsm.currentState.OnCollisionEnter(collision);
     }
     #endregion
 
@@ -52,5 +66,9 @@ public class Player : MonoBehaviour
     #region Movement
     public float velocity = 1;
     [HideInInspector] public Vector3 movementDirection;
+    #endregion
+
+    #region Trail
+    [HideInInspector] public PlayerTrail trail;
     #endregion
 }
