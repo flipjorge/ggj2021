@@ -1,14 +1,17 @@
-using System;
 using UnityEngine;
 
 public class CrowdSystem : MonoBehaviour
 {
-
     [SerializeField]
     private CrowdUnit crowdUnitPrefab;
 
+    [SerializeField]
+    private CrowdSettings crowdSettings;
+
     public CrowdSpawnPoint[] spawnPoints;
-    
+
+    public Bounds playableArea;
+
     private void Awake()
     {
         spawnPoints = FindObjectsOfType<CrowdSpawnPoint>();
@@ -26,6 +29,16 @@ public class CrowdSystem : MonoBehaviour
     {
         var spawnPoint = spawnPoints.PickRandom();
 
-        CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity);
+        var behavior = crowdSettings.unitBehaviors.PickRandom();
+
+        CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity,
+            this.transform);
+
+        unit.Setup(playableArea, spawnPoints, behavior);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawCube(playableArea.center, playableArea.size);
     }
 }

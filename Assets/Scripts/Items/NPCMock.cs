@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCMock : MonoBehaviour
 {
-    public GameObject item;
+    public GameObject itemPrefab;
     private float waitTime;
 
     // Start is called before the first frame update
@@ -23,8 +23,7 @@ public class NPCMock : MonoBehaviour
 
     private void SpawnItem()
     {
-        item.transform.position = gameObject.transform.position;
-        Instantiate(item);
-        item.GetComponent<Item>().owner = gameObject;
+        var item = Instantiate(itemPrefab).GetComponent<Item>();
+        item.drop(gameObject);
     }
 }
