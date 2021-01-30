@@ -9,27 +9,38 @@ public class PlayerStateIdle : FSMState<Player>
     #region
     public override void Enter()
     {
-        base.Enter();
-
         _camera = Camera.main;
     }
 
     public override void Update()
     {
-        base.Update();
-
     }
 
     public override void FixedUpdate()
     {
-        base.FixedUpdate();
-
         owner.rigidbody.velocity = Quaternion.Euler(0, _camera.transform.eulerAngles.y, 0) * owner.movementDirection * owner.velocity * Time.fixedDeltaTime;
+    }
+
+    public override void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Item"))
+        {
+            var item = collision.collider.GetComponent<Item>();
+            owner.trail.addItem(item);
+        }
+        else if (collision.collider.CompareTag("NPC"))
+        {
+            if (owner.trail.isFirstItemFrom(collision.collider.gameObject))
+            {
+                owner.trail.destroyFirst();
+                //TODO: give it to the owner and score
+            }
+        }
     }
 
     public override void Exit()
     {
-        base.Exit();
+
     }
     #endregion
 
