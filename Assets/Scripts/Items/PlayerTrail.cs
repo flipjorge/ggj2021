@@ -17,12 +17,13 @@ public class PlayerTrail : MonoBehaviour
         item.startFollowing(this);
     }
 
-    public void destroyFirst()
+    public void deliverFirst()
     {
         if (LeaderTrail.Count > 0)
         {
             GameObject first = LeaderTrail[0];
-            LeaderTrail.RemoveAt(0);
+            first.GetComponent<Item>().delivered = true;
+            LeaderTrail.Remove(first);
             Destroy(first);
         }
     }

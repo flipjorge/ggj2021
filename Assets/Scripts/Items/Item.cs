@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Net;
 using UnityEngine;
 
@@ -5,6 +6,9 @@ public class Item : MonoBehaviour
 {
     [HideInInspector] public GameObject owner;
     public Sprite[] sprites;
+    public static float timeToLiveSeconds = 5f;
+    [HideInInspector]
+    public bool delivered = false;
 
     private PlayerTrail playerTrail;
     private Transform target;
@@ -49,6 +53,19 @@ public class Item : MonoBehaviour
             }
         }
     }
+
+    private void OnDestroy()
+    {
+        if (delivered)
+        {
+            print("My precious...");
+        }
+        else
+        {
+            print("You've failed Middle-earth");
+            // decrease score
+        }
+    }
     #endregion
 
     #region Drop
@@ -57,6 +74,41 @@ public class Item : MonoBehaviour
         this.owner = owner;
         transform.position = new Vector3(owner.transform.position.x, 0, owner.transform.position.z);
     }
+    #endregion
+
+    #region No Owner Handling
+
+    public void ownerLeaving()
+    {
+        this.owner = GameObject.FindGameObjectWithTag("Balcony");
+        StartCoroutine(FadeUntilDestroyed());
+        StartCoroutine(DestroyAfterTimeToLiveSeconds());
+    }
+
+    public IEnumerator FadeUntilDestroyed()
+    {
+        float elapsedTime = 0f;
+        float startValue = spriteRenderer.color.a;
+        while (elapsedTime < timeToLiveSeconds)
+        {
+            elapsedTime += Time.deltaTime;
+            float newAlpha = Mathf.Lerp(startValue, 0f, elapsedTime / timeToLiveSeconds);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, newAlpha);
+            yield return null;
+        }
+    }
+
+    public IEnumerator DestroyAfterTimeToLiveSeconds()
+    {
+        yield return new WaitForSeconds(timeToLiveSeconds);
+
+        if (playerTrail != null)
+        {
+            playerTrail.LeaderTrail.Remove(gameObject);
+        }
+        Destroy(gameObject);
+    }
+
     #endregion
 
     #region Trail
