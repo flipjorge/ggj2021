@@ -1,11 +1,15 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Player : MonoBehaviour
 {
     #region Lifecycle
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
         fsm = new PlayerFSM(this);
     }
 
@@ -17,6 +21,13 @@ public class Player : MonoBehaviour
     private void Update()
     {
         fsm.currentState.Update();
+
+        //set animator velocity parameter
+        animator.SetFloat("velocity", rigidbody.velocity.magnitude);
+
+        //set sprite direction
+        if (spriteRenderer.flipX && movementDirection.x < 0) spriteRenderer.flipX = false;
+        else if (!spriteRenderer.flipX && movementDirection.x > 0) spriteRenderer.flipX = true;
     }
 
     private void FixedUpdate()
@@ -33,9 +44,13 @@ public class Player : MonoBehaviour
     [HideInInspector] public new Rigidbody rigidbody;
     #endregion
 
+    #region Visual
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    #endregion
+
     #region Movement
     public float velocity = 1;
     [HideInInspector] public Vector3 movementDirection;
-    [HideInInspector] public Quaternion rotationDirection;
     #endregion
 }
