@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
         var horizontal = Input.GetAxis("Horizontal");
         var vertical = Input.GetAxis("Vertical");
 
-        _player.movementDirection = new Vector3(horizontal, 0, vertical);
+        _player.movementDirection = new Vector3(horizontal, 0, vertical).normalized;
     }
     #endregion
 
