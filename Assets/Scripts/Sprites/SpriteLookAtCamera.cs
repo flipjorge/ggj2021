@@ -10,7 +10,7 @@ public class SpriteLookAtCamera : MonoBehaviour
         _camera = Camera.main;
         transform.LookAt(_camera.transform);
         var rotation = transform.eulerAngles;
-        rotation.y = 180;
+        rotation.y = 180 - transform.parent.rotation.y;
         transform.rotation = Quaternion.Euler(rotation);
     }
 
@@ -20,7 +20,7 @@ public class SpriteLookAtCamera : MonoBehaviour
 
         transform.LookAt(_camera.transform);
         var rotation = transform.eulerAngles;
-        rotation.y = 180;
+        rotation.y = 180 - transform.parent.rotation.y;
         transform.rotation = Quaternion.Euler(rotation);
     }
     #endregion
