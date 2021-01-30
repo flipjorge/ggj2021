@@ -20,8 +20,8 @@ public class Item : MonoBehaviour
         {
             float followSharpness = 0.1f;
             float offsetFloat = 2f;
-            Vector3 offset = target.forward * offsetFloat;
-            transform.LookAt(target);
+            Vector3 offset = target.right * offsetFloat;
+            transform.rotation = Quaternion.LookRotation(-target.right, transform.up) * Quaternion.Euler(new Vector3(0, 90, 0));
             transform.position += ((target.position - transform.position) - offset) * followSharpness;
         }
     }
