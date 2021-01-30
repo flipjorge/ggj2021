@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerTrail : MonoBehaviour
 {
     public List<GameObject> LeaderTrail;
+    public int maxTrailSize = 5;
 
     private void Start()
     {

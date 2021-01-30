@@ -25,8 +25,15 @@ public class PlayerStateIdle : FSMState<Player>
     {
         if (collision.collider.CompareTag("Item"))
         {
-            var item = collision.collider.GetComponent<Item>();
-            owner.trail.addItem(item);
+            if (owner.trail.LeaderTrail.Count < owner.trail.maxTrailSize)
+            {
+                var item = collision.collider.GetComponent<Item>();
+                owner.trail.addItem(item);
+            }
+            else
+            {
+                //TODO: probably notify the player that he can't pick another item
+            }
         }
         else if (collision.collider.CompareTag("NPC"))
         {
