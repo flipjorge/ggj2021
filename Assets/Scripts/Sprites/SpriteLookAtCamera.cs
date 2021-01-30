@@ -8,13 +8,28 @@ public class SpriteLookAtCamera : MonoBehaviour
     private void Awake()
     {
         _camera = Camera.main;
+        transform.LookAt(_camera.transform);
         var rotation = transform.eulerAngles;
-        rotation.y = _camera.transform.eulerAngles.y;
+        rotation.y = 180;
+        transform.rotation = Quaternion.Euler(rotation);
+    }
+
+    private void Update()
+    {
+        if (!useUpdate) return;
+
+        transform.LookAt(_camera.transform);
+        var rotation = transform.eulerAngles;
+        rotation.y = 180;
         transform.rotation = Quaternion.Euler(rotation);
     }
     #endregion
 
     #region Camera
     private Camera _camera;
+    #endregion
+
+    #region RefreshOnUpdate
+    public bool useUpdate;
     #endregion
 }
