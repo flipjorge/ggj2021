@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,19 @@ public class GameManager : Singleton<GameManager>
     //public ObjectFinderService ofs;
 
     public int SessionTimeInSeconds;
+
+    #region Gameplay
+    public int Score { get; private set; }
+
+    public TimeSpan TimeLeft { get; private set; }
+
+    public int ObjectsDelivered { get; private set; }
+
+    public int ObjectsNotDelivered { get; private set; }
+
+    public UnityEvent OnGameplayStarted;
+    public UnityEvent<int> OnScoreChanged;
+    #endregion
 
     void Start()
     {
@@ -36,7 +50,7 @@ public class GameManager : Singleton<GameManager>
         if(currentGameState == GameState.InGame)
         {
             SceneManager.LoadScene(2);
-            //Time.timeScale = 0;
+            Time.timeScale = 0;
         }
         else if(currentGameState != GameState.Intro)
         {
@@ -44,10 +58,40 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    #region Gameplay
     public void ActivateGameplay()
     {
         Time.timeScale = 1;
+        Score = 0;
+        OnScoreChanged?.Invoke(Score);
+        OnGameplayStarted?.Invoke();
     }
 
+    public void Scored(int value = 1)
+    {
+        Score += value;
+        OnScoreChanged?.Invoke(Score);
+    }
+
+    public void RegisterOnStartEvent(UnityAction callback)
+    {
+        OnGameplayStarted.AddListener(callback);
+    }
+
+    public void UnRegisterOnStartEvent(UnityAction callback)
+    {
+        OnGameplayStarted.RemoveListener(callback);
+    }
+
+    public void RegisterOnScoreEvent(UnityAction<int> callback)
+    {
+        OnScoreChanged.AddListener(callback);
+    }
+
+    public void UnRegisterOnScoreEvent(UnityAction<int> callback)
+    {
+        OnScoreChanged.RemoveListener(callback);
+    }
+    #endregion
 
 }

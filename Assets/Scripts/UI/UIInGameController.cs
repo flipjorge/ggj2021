@@ -7,7 +7,13 @@ using UnityEngine.UI;
 public class UIInGameController : MonoBehaviour
 {
     [SerializeField]
+    private TextMeshProUGUI initialCounterTxt;
+
+    [SerializeField]
     private TextMeshProUGUI counterTxt;
+
+    [SerializeField]
+    private TextMeshProUGUI scoreTxt;
 
     [SerializeField]
     private Image background;
@@ -21,27 +27,44 @@ public class UIInGameController : MonoBehaviour
     void Start()
     {
         initialCounter = counter;
+        GameManager.Instance.RegisterOnStartEvent(OnGameplayStarted);
+        GameManager.Instance.RegisterOnScoreEvent(OnScoreChanged);
         Init();
     }
 
     public void Init()
     {
-        StartCounter();
+        StartInitialCounter();
     }
 
-    private void StartCounter()
+    private void StartInitialCounter()
     {
-        counterTxt.text = initialCounter.ToString();
-        counterTxt.DOFade(1f, .25f);
+        initialCounterTxt.text = initialCounter.ToString();
 
         background.DOFade(0, initialCounter);
-        DOTween.To(() => counter, x => { counter = x; counterTxt.text = counter.ToString();}, 0, initialCounter).OnComplete(OnCounterComplete).SetUpdate(true);
+        DOTween.To(() => counter, x => { counter = x; initialCounterTxt.text = counter.ToString();}, 0, initialCounter).OnComplete(OnCounterComplete).SetUpdate(true);
         //Time.timeScale = 0;
 
     }
 
     private void OnCounterComplete()
     {
-        counterTxt.DOFade(0f, .25f).OnComplete(() => GameManager.Instance.ActivateGameplay());
+        Time.timeScale = 1;
+        initialCounterTxt.DOFade(0f, .25f).OnComplete(() => GameManager.Instance.ActivateGameplay());
+    }
+
+    private void OnGameplayStarted()
+    {
+        
+    }
+
+    private void OnScoreChanged(int newScore)
+    {
+        scoreTxt.text = newScore.ToString();
+    }
+
+    void OnDisable()
+    {
+        GameManager.Instance.UnRegisterOnStartEvent(OnGameplayStarted); 
     }
 }
