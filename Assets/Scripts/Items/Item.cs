@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
-using System.Net;
 using UnityEngine;
 
+[Serializable]
 public class Item : MonoBehaviour
 {
     [HideInInspector] public GameObject owner;
@@ -13,7 +14,7 @@ public class Item : MonoBehaviour
     private PlayerTrail playerTrail;
     private Transform target;
     private bool followingTarget;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     #region Lifecycle
     private void Awake()
@@ -23,7 +24,7 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        var randomItemIndex = Random.Range(0, sprites.Length - 1);
+        var randomItemIndex = UnityEngine.Random.Range(0, sprites.Length - 1);
         spriteRenderer.sprite = sprites[randomItemIndex];
     }
 

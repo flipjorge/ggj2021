@@ -18,6 +18,12 @@ public class CrowdSystem : MonoBehaviour
     private float currentSpawnRate;
     private int maxSpawnableUnits = 4;
 
+    private Color[] colors = {
+        new Color(0.5f, 0f, 0f), 
+        new Color(0f, 0.5f, 0f),
+        new Color(0f, 0f, 0.5f)
+    };
+
     private void Awake()
     {
         spawnPoints = FindObjectsOfType<CrowdSpawnPoint>();
@@ -93,6 +99,7 @@ public class CrowdSystem : MonoBehaviour
 
         CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity,
             this.transform);
+        unit.spriteRenderer.color = colors.PickRandom();
 
         unit.Setup(playableArea, spawnPoints, behavior, this);
 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpriteLookAtCamera : MonoBehaviour
 {
     #region Lifecycle
+
     private void Awake()
     {
         _camera = Camera.main;
@@ -12,6 +13,9 @@ public class SpriteLookAtCamera : MonoBehaviour
         var rotation = transform.eulerAngles;
         rotation.y = 180 - transform.parent.rotation.y;
         transform.rotation = Quaternion.Euler(rotation);
+
+        if (revertLookAt)
+            transform.forward *= -1;
     }
 
     private void Update()
@@ -23,13 +27,20 @@ public class SpriteLookAtCamera : MonoBehaviour
         rotation.y = 180 - transform.parent.rotation.y;
         transform.rotation = Quaternion.Euler(rotation);
     }
+
     #endregion
 
     #region Camera
+
     private Camera _camera;
+
     #endregion
 
     #region RefreshOnUpdate
+
     public bool useUpdate;
+
     #endregion
+
+    public bool revertLookAt = false;
 }
