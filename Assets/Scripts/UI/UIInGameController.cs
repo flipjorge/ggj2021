@@ -50,7 +50,7 @@ public class UIInGameController : MonoBehaviour
     {
         if (gameplayActive)
         {
-            counterTxt.text = string.Format("{0:D2}:{1:D2}", GMref.TimeLeft.Minutes, GMref.TimeLeft.Seconds); 
+            counterTxt.text = string.Format("{0:D2}:{1:D2}", Mathf.Clamp(GMref.TimeLeft.Minutes, 0, 100000), Mathf.Clamp(GMref.TimeLeft.Seconds, 0, 100000)); 
         }
 
         if (allowRestart)

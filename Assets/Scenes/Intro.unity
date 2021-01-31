@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1825528728330663966, guid: 0cd80ab06578ad8428b61bdf93aa28f6, type: 3}
       propertyPath: SessionTimeInSeconds
-      value: 10
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 1825528728330663966, guid: 0cd80ab06578ad8428b61bdf93aa28f6, type: 3}
       propertyPath: OnGameStateChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
