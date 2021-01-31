@@ -22,11 +22,16 @@ public class AutomaticDoor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (!other.tag.Equals("NPC")) return;
+
         Open();
     }
 
     private void OnTriggerExit(Collider other)
     {
+
+        if (!other.tag.Equals("NPC")) return;
+
         Close();
     }
     
