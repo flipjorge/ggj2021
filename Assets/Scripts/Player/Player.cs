@@ -27,14 +27,14 @@ public class Player : MonoBehaviour
         animator.SetFloat("velocity", rigidbody.velocity.magnitude);
 
         //set sprite direction
-        if (spriteRenderer.flipX && movementDirection.x < 0)
-        {
-            spriteRenderer.flipX = false;
-            trail.transform.localRotation = Quaternion.AngleAxis(180f, trail.transform.up);
-        }
-        else if (!spriteRenderer.flipX && movementDirection.x > 0)
+        if (!spriteRenderer.flipX && movementDirection.x < 0)
         {
             spriteRenderer.flipX = true;
+            trail.transform.localRotation = Quaternion.AngleAxis(180f, trail.transform.up);
+        }
+        else if (spriteRenderer.flipX && movementDirection.x > 0)
+        {
+            spriteRenderer.flipX = false;
             trail.transform.localRotation = Quaternion.AngleAxis(0f, trail.transform.up);
         }
     }

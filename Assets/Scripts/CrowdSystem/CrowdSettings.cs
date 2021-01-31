@@ -7,12 +7,16 @@ public class CrowdSettings : ScriptableObject
     [Header("Spawn Settings")]
     [SerializeField]
     private float _spawnRate;
+    [SerializeField]
+    private int _maxUnits;
 
     [Header("Unit Behaviors")]
     [SerializeField]
     private UnitBehavior[] _unitBehaviors;
 
     public float spawnRate => _spawnRate;
+
+    public int maxUnits => _maxUnits;
 
     public UnitBehavior[] unitBehaviors => _unitBehaviors;
 }

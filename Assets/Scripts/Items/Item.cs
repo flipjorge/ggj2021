@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
-using System.Net;
 using UnityEngine;
 
+[Serializable]
 public class Item : MonoBehaviour
 {
     [HideInInspector] public GameObject owner;
@@ -23,7 +24,7 @@ public class Item : MonoBehaviour
 
     void Start()
     {
-        var randomItemIndex = Random.Range(0, sprites.Length - 1);
+        var randomItemIndex = UnityEngine.Random.Range(0, sprites.Length - 1);
         spriteRenderer.sprite = sprites[randomItemIndex];
     }
 
@@ -64,6 +65,7 @@ public class Item : MonoBehaviour
         {
             print("You've failed Middle-earth");
             // decrease score
+            GameManager.Instance.ChangeScore(ScoreValue.Lost);
         }
     }
     #endregion

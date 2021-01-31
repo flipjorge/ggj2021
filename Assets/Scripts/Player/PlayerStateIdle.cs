@@ -25,8 +25,15 @@ public class PlayerStateIdle : FSMState<Player>
     {
         if (collision.collider.CompareTag("Item"))
         {
-            var item = collision.collider.GetComponent<Item>();
-            owner.trail.addItem(item);
+            if (owner.trail.LeaderTrail.Count < owner.trail.maxTrailSize)
+            {
+                var item = collision.collider.GetComponent<Item>();
+                owner.trail.addItem(item);
+            }
+            else
+            {
+                //TODO: probably notify the player that he can't pick another item
+            }
         }
         else if (collision.collider.CompareTag("NPC"))
         {
@@ -34,6 +41,7 @@ public class PlayerStateIdle : FSMState<Player>
             {
                 owner.trail.deliverFirst();
                 //TODO: give it to the owner and score
+                GameManager.Instance.ChangeScore(ScoreValue.DeliveredOwner);
             }
         }
         else if (collision.collider.CompareTag("Balcony"))
@@ -42,6 +50,7 @@ public class PlayerStateIdle : FSMState<Player>
             {
                 owner.trail.deliverFirst();
                 //TODO: give it to the balcony and score
+                GameManager.Instance.ChangeScore(ScoreValue.DeliveredBalcony);
             }
         }
     }
