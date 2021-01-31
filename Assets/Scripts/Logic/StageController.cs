@@ -9,7 +9,7 @@ public class StageController : MonoBehaviour
     
     public void OnStateChanged(GameState state)
     {
-        DestroyObject(currentGO);
+        Object.Destroy(currentGO);
 
         GameObject go = stageSO.GetPrefab(state);
         if(go != null)

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intro: {fileID: 8037790041580456599, guid: a6f0eadde457bc044b80183821292111, type: 3}
   menu: {fileID: 8037790041580456599, guid: c3f0f12b904a5e44cbb365d20b611f6f, type: 3}
-  inGame: {fileID: 0}
+  inGame: {fileID: 8037790041580456599, guid: 9dddc2fcdd7450848b108e2745c5fa4c, type: 3}
   gameOver: {fileID: 0}

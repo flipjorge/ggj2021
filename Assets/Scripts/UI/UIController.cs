@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
 
     public void OnStateChanged(GameState state)
     {
-        DestroyObject(currentGO);
+        Object.Destroy(currentGO);
 
         GameObject go = uiSO.GetPrefab(state);
         if (go != null)

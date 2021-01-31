@@ -1,10 +1,13 @@
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public enum GameState { NullState, Intro, Menu, InGame, GameOver }
 
 public class GameManager : Singleton<GameManager>
 {
     private GameState currentGameState;
+    //private GameState previousGameState;
     public UnityEvent<GameState> OnGameStateChanged;
 
     //public ObjectFinderService ofs;
@@ -29,7 +32,22 @@ public class GameManager : Singleton<GameManager>
         {
             OnGameStateChanged?.Invoke(gameState);
         }
+        
+        if(currentGameState == GameState.InGame)
+        {
+            SceneManager.LoadScene(2);
+            //Time.timeScale = 0;
+        }
+        else if(currentGameState != GameState.Intro)
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
-    
+    public void ActivateGameplay()
+    {
+        Time.timeScale = 1;
+    }
+
+
 }
