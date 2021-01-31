@@ -140,6 +140,8 @@ public class CrowdUnit : MonoBehaviour
         }
 
         nextItemReference.onValueChanged -= _nextItemChanged;
+
+        transform.DOKill();
     }
 
     private void _nextItemChanged(Item obj)
