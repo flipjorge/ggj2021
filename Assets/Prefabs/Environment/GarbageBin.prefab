@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5794257200303063909}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008309624, y: 0.022849824, z: 0}
+  m_LocalPosition: {x: 0.008309624, y: -0.231, z: 0}
   m_LocalScale: {x: 0.7353649, y: 0.28002253, z: 1}
   m_Children: []
   m_Father: {fileID: 2441059289727889328}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3196091459152526955}
   - component: {fileID: 7748641935219256925}
   m_Layer: 3
-  m_Name: GarbageBin 1
+  m_Name: GarbageBin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,7 +146,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8358600764015131358}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
