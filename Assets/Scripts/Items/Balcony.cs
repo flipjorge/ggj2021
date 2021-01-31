@@ -7,7 +7,7 @@ public class Balcony : MonoBehaviour
     public GameObject arrow;
     public ItemReference nextItemReference;
 
-    public Collider collider;
+    public GameObject collider;
     
     private void Awake()
     {

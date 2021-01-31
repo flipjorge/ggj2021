@@ -369,7 +369,7 @@ PrefabInstance:
     - target: {fileID: 1726391706, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
       propertyPath: collider
       value: 
-      objectReference: {fileID: 1847344616}
+      objectReference: {fileID: 1726391705}
     - target: {fileID: 3196091458727561348, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -448,9 +448,9 @@ PrefabInstance:
       objectReference: {fileID: 23800000, guid: a61423c649f5e44698247f7a2837e7f2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
---- !u!65 &1847344616 stripped
-BoxCollider:
-  m_CorrespondingSourceObject: {fileID: 247659952, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+--- !u!1 &1726391705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 247659950, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
   m_PrefabInstance: {fileID: 1726391704}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1858480602
