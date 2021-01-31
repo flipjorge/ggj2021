@@ -22,7 +22,7 @@ public class CrowdUnit : MonoBehaviour
 
     private Bounds playableArea;
 
-    private CrowdSpawnPoint[] spawnPoints;
+    private CrowdExitPoint[] exitPoints;
 
     private Coroutine routine;
 
@@ -72,9 +72,9 @@ public class CrowdUnit : MonoBehaviour
         }
     }
 
-    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior, CrowdSystem crowdSystem)
+    public void Setup(Bounds playableArea, CrowdExitPoint[] exitPoints, UnitBehavior unitBehavior, CrowdSystem crowdSystem)
     {
-        this.spawnPoints = spawnPoints;
+        this.exitPoints = exitPoints;
         this.playableArea = playableArea;
         this.unitBehavior = unitBehavior;
         this.crowdSystem = crowdSystem;
@@ -113,7 +113,7 @@ public class CrowdUnit : MonoBehaviour
             }
         }
 
-        agent.destination = spawnPoints.PickRandom().transform.position;
+        agent.destination = exitPoints.PickRandom().transform.position;
 
         while (!HasArrivedToDestination())
         {
