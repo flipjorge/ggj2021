@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class CrowdUnit : MonoBehaviour
 {
+    private CrowdSystem crowdSystem;
+
     [SerializeField]
     private Item itemPrefab;
 
@@ -65,11 +67,12 @@ public class CrowdUnit : MonoBehaviour
         }
     }
 
-    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior)
+    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior, CrowdSystem crowdSystem)
     {
         this.spawnPoints = spawnPoints;
         this.playableArea = playableArea;
         this.unitBehavior = unitBehavior;
+        this.crowdSystem = crowdSystem;
 
         agent.speed = unitBehavior.unitSpeed;
     }
@@ -112,7 +115,7 @@ public class CrowdUnit : MonoBehaviour
         }
 
         //unit left the building
-
+        crowdSystem.spawnedUnits--;
         Destroy(this.gameObject);
     }
 
