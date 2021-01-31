@@ -32,8 +32,16 @@ public class PlayerStateIdle : FSMState<Player>
         {
             if (owner.trail.isFirstItemFrom(collision.collider.gameObject))
             {
-                owner.trail.destroyFirst();
+                owner.trail.deliverFirst();
                 //TODO: give it to the owner and score
+            }
+        }
+        else if (collision.collider.CompareTag("Balcony"))
+        {
+            if (owner.trail.isFirstItemFrom(collision.collider.gameObject))
+            {
+                owner.trail.deliverFirst();
+                //TODO: give it to the balcony and score
             }
         }
     }
