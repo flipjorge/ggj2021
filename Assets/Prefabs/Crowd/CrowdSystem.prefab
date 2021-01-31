@@ -82,8 +82,8 @@ MonoBehaviour:
   spawnPoints: []
   exitPoints: []
   playableArea:
-    m_Center: {x: 1.8, y: 0, z: -13.6}
-    m_Extent: {x: 29.93, y: 3.2, z: 34.6}
+    m_Center: {x: 1.8, y: 0, z: -6.7}
+    m_Extent: {x: 25.5, y: 3.2, z: 22.76}
   spawnedUnits: 0
 --- !u!114 &1548052105
 MonoBehaviour:
@@ -184,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.4
+      value: 37.42
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalPosition.y
@@ -192,7 +192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.3
+      value: 19.01
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalRotation.w
@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.4
+      value: -37.57
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalPosition.y
@@ -260,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 11.6
+      value: 18.48
       objectReference: {fileID: 0}
     - target: {fileID: 9121990501951534088, guid: 28b04b144d16340428bfb7e037a3b571, type: 3}
       propertyPath: m_LocalRotation.w
