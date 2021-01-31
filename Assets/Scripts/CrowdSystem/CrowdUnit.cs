@@ -18,11 +18,13 @@ public class CrowdUnit : MonoBehaviour
     [SerializeField]
     private UnitBehavior unitBehavior;
 
+    public GameObject arrow;
+
     private NavMeshAgent agent;
 
     private Bounds playableArea;
 
-    private CrowdSpawnPoint[] spawnPoints;
+    private CrowdExitPoint[] exitPoints;
 
     private Coroutine routine;
 
@@ -30,9 +32,14 @@ public class CrowdUnit : MonoBehaviour
     private bool alreadyDropped;
     private Item droppedItem;
 
-    [HideInInspector] public Animator animator;
-    [HideInInspector] public SpriteRenderer spriteRenderer;
-    [HideInInspector] public new Rigidbody rigidbody;
+    [HideInInspector]
+    public Animator animator;
+
+    [HideInInspector]
+    public SpriteRenderer spriteRenderer;
+
+    [HideInInspector]
+    public new Rigidbody rigidbody;
 
     public ItemReference nextItemReference;
 
@@ -72,9 +79,10 @@ public class CrowdUnit : MonoBehaviour
         }
     }
 
-    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior, CrowdSystem crowdSystem)
+    public void Setup(Bounds playableArea, CrowdExitPoint[] exitPoints, UnitBehavior unitBehavior,
+        CrowdSystem crowdSystem)
     {
-        this.spawnPoints = spawnPoints;
+        this.exitPoints = exitPoints;
         this.playableArea = playableArea;
         this.unitBehavior = unitBehavior;
         this.crowdSystem = crowdSystem;
@@ -107,12 +115,13 @@ public class CrowdUnit : MonoBehaviour
             if (isDropper && !alreadyDropped)
             {
                 droppedItem = Instantiate<Item>(itemPrefab);
+                droppedItem.spriteRenderer.color = spriteRenderer.color;
                 droppedItem.drop(gameObject);
                 alreadyDropped = true;
             }
         }
 
-        agent.destination = spawnPoints.PickRandom().transform.position;
+        agent.destination = exitPoints.PickRandom().transform.position;
 
         while (!HasArrivedToDestination())
         {
@@ -156,12 +165,11 @@ public class CrowdUnit : MonoBehaviour
     {
         if (obj != null && droppedItem == obj)
         {
-            transform.DOShakeScale(999);
+            arrow.SetActive(true);
         }
         else
         {
-            transform.DOKill();
-            transform.localScale = Vector3.one;
+            arrow.SetActive(false);
         }
     }
 }

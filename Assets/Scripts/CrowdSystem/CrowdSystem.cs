@@ -11,6 +11,8 @@ public class CrowdSystem : MonoBehaviour
 
     public CrowdSpawnPoint[] spawnPoints;
 
+    public CrowdExitPoint[] exitPoints;
+    
     public Bounds playableArea;
 
     [HideInInspector]
@@ -18,9 +20,16 @@ public class CrowdSystem : MonoBehaviour
     private float currentSpawnRate;
     private int maxSpawnableUnits = 4;
 
+    private Color[] colors = {
+        new Color(0.5f, 0f, 0f), 
+        new Color(0f, 0.2f, 0f),
+        new Color(0f, 0f, 0.5f)
+    };
+
     private void Awake()
     {
         spawnPoints = FindObjectsOfType<CrowdSpawnPoint>();
+        exitPoints = FindObjectsOfType<CrowdExitPoint>();
         currentSpawnRate = crowdSettings.spawnRate;
     }
     void Start()
@@ -38,7 +47,7 @@ public class CrowdSystem : MonoBehaviour
 
     IEnumerator SpawnObject()
     {
-        float spawnCountdown = crowdSettings.spawnRate;
+        float spawnCountdown = 0;
         while (true)
         {
             yield return null;
@@ -93,8 +102,9 @@ public class CrowdSystem : MonoBehaviour
 
         CrowdUnit unit = Instantiate(crowdUnitPrefab, spawnPoint.transform.position, Quaternion.identity,
             this.transform);
+        unit.spriteRenderer.color = colors.PickRandom();
 
-        unit.Setup(playableArea, spawnPoints, behavior, this);
+        unit.Setup(playableArea, exitPoints, behavior, this);
 
         spawnedUnits++;
     }

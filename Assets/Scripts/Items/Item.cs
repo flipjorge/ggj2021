@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     private PlayerTrail playerTrail;
     private Transform target;
     private bool followingTarget;
-    private SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
 
     #region Lifecycle
     private void Awake()

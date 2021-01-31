@@ -11,11 +11,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ignore Render
   - Water
   - UI
-  - 
-  - 
+  - NPC
+  - Item
   - 
   - 
   - 
