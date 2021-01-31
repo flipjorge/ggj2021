@@ -5,6 +5,9 @@ using UnityEngine;
 [Serializable]
 public class Item : MonoBehaviour
 {
+
+    private GameManager gameManager;
+
     [HideInInspector] public GameObject owner;
     public Sprite[] sprites;
     public static float timeToLiveSeconds = 5f;
@@ -26,6 +29,7 @@ public class Item : MonoBehaviour
     {
         var randomItemIndex = UnityEngine.Random.Range(0, sprites.Length - 1);
         spriteRenderer.sprite = sprites[randomItemIndex];
+        gameManager = (GameManager)GameObject.Find("GM").GetComponent("GameManager");
     }
 
     private void FixedUpdate()
@@ -65,6 +69,7 @@ public class Item : MonoBehaviour
         {
             print("You've failed Middle-earth");
             // decrease score
+            gameManager.ChangeScore(ScoreValue.Lost);
         }
     }
     #endregion

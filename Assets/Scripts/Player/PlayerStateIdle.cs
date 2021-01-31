@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PlayerStateIdle : FSMState<Player>
 {
+
+    private GameManager gameManager;
+
     #region Constructors
     public PlayerStateIdle(FSM<Player> fsm) : base(fsm) { }
     #endregion
@@ -10,6 +13,7 @@ public class PlayerStateIdle : FSMState<Player>
     public override void Enter()
     {
         _camera = Camera.main;
+        gameManager = (GameManager)GameObject.Find("GM").GetComponent("GameManager");
     }
 
     public override void Update()
@@ -41,6 +45,7 @@ public class PlayerStateIdle : FSMState<Player>
             {
                 owner.trail.deliverFirst();
                 //TODO: give it to the owner and score
+                gameManager.ChangeScore(ScoreValue.DeliveredOwner);
             }
         }
         else if (collision.collider.CompareTag("Balcony"))
@@ -49,6 +54,7 @@ public class PlayerStateIdle : FSMState<Player>
             {
                 owner.trail.deliverFirst();
                 //TODO: give it to the balcony and score
+                gameManager.ChangeScore(ScoreValue.DeliveredBalcony);
             }
         }
     }
