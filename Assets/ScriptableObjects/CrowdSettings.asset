@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8ad9030ecd774a5c8dbb89a268c1584, type: 3}
   m_Name: CrowdSettings
   m_EditorClassIdentifier: 
-  _spawnRate: 5
-  _maxUnits: 15
+  _spawnRate: 3
+  _maxUnits: 25
   _unitBehaviors:
   - chanceOfCheckingStore: 0.5
     stopsAtDestinationBeforeContinue: 1
