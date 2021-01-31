@@ -392,6 +392,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 247659950, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_TagString
+      value: Balcony
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574880526607596141, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721029518314721254, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5835088411289651521, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -439,6 +451,10 @@ PrefabInstance:
     - target: {fileID: 5835088411289651526, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
       propertyPath: m_Name
       value: Environment
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835088411573508699, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
