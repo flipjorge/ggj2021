@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 886268678948139719}
   - component: {fileID: 886268678948139716}
   - component: {fileID: 4422192580384426858}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Item
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -62,6 +62,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8a88972609aa54690858cd891b14ab0a, type: 3}
   - {fileID: 21300000, guid: ab83ef943dd064b65ba29010f5b28d9d, type: 3}
   delivered: 0
+  spriteRenderer: {fileID: 0}
 --- !u!54 &886268678948139716
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -103,7 +104,7 @@ GameObject:
   - component: {fileID: 1451206241797891090}
   - component: {fileID: 1953495481247273468}
   - component: {fileID: 5576512842475863511}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useUpdate: 0
+  revertLookAt: 0
 --- !u!212 &1953495481247273468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -201,3 +203,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useUpdate: 1
+  revertLookAt: 0

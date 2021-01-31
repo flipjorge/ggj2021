@@ -47,7 +47,7 @@ public class CrowdSystem : MonoBehaviour
 
     IEnumerator SpawnObject()
     {
-        float spawnCountdown = crowdSettings.spawnRate;
+        float spawnCountdown = 0;
         while (true)
         {
             yield return null;

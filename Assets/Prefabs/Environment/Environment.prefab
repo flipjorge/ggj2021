@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4389984892828653739}
   m_Layer: 0
   m_Name: collider
-  m_TagString: Untagged
+  m_TagString: Balcony
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -496,6 +496,99 @@ Transform:
   m_Father: {fileID: 5835088411289651521}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1730237038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1730237040}
+  - component: {fileID: 1730237039}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1730237040
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730237038}
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5835088411289651521}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!108 &1730237039
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730237038}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 1
+  m_Shape: 0
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &1779354174
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,6 +853,7 @@ Transform:
   - {fileID: 1779354175}
   - {fileID: 1212216154}
   - {fileID: 1602317075}
+  - {fileID: 1730237040}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -918,7 +1012,7 @@ GameObject:
   - component: {fileID: 877968475334474481}
   m_Layer: 0
   m_Name: Balcony
-  m_TagString: Balcony
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1510,7 +1604,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &4137209147184139300 stripped
 Transform:
@@ -1580,7 +1675,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059289498523610 stripped
 Transform:
@@ -1642,7 +1738,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarbageBin (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
 --- !u!4 &2441059289472850511 stripped
 Transform:
@@ -1716,7 +1813,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bench (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6948231632422015820, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
 --- !u!4 &3806169777497257190 stripped
 Transform:
@@ -1786,7 +1884,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bench (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6948231632422015820, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
 --- !u!4 &3806169777446535689 stripped
 Transform:
@@ -2052,7 +2151,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059289352950578 stripped
 Transform:
@@ -2114,7 +2214,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarbageBin (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
 --- !u!4 &2441059289298769502 stripped
 Transform:
@@ -2176,7 +2277,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &4137209147394826907 stripped
 Transform:
@@ -2238,7 +2340,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarbageBin (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
 --- !u!4 &2441059289201776991 stripped
 Transform:
@@ -2308,7 +2411,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059290230563324 stripped
 Transform:
@@ -2370,7 +2474,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &4137209146525343697 stripped
 Transform:
@@ -2432,7 +2537,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarbageBin (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
 --- !u!4 &2441059290088883931 stripped
 Transform:
@@ -2494,7 +2600,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarbageBin
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
 --- !u!4 &2441059289993866292 stripped
 Transform:
@@ -2568,7 +2675,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bench (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6948231632422015820, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
 --- !u!4 &3806169776966176490 stripped
 Transform:
@@ -2630,7 +2738,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &4137209146987087167 stripped
 Transform:
@@ -2700,7 +2809,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Couch (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9190446399896939247, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
 --- !u!4 &3113164554145561052 stripped
 Transform:
@@ -2762,7 +2872,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarbageBin (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7915913c40ba544b39b63e8cda80cd78, type: 3}
 --- !u!4 &2441059290638062414 stripped
 Transform:
@@ -2832,7 +2943,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Couch (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9190446399896939247, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
 --- !u!4 &3113164552748302328 stripped
 Transform:
@@ -2902,7 +3014,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Couch
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9190446399896939247, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
 --- !u!4 &3113164552761464061 stripped
 Transform:
@@ -3082,14 +3195,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
---- !u!4 &3669508865431703390 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3669508866885623130, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
-  m_PrefabInstance: {fileID: 1458115076}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3669508867275718340 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3669508865846963392, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
+  m_PrefabInstance: {fileID: 1458115076}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3669508865431703390 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3669508866885623130, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
   m_PrefabInstance: {fileID: 1458115076}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &3669508867123271276 stripped
@@ -3164,7 +3277,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bench (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6948231632422015820, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
 --- !u!4 &3806169778465272274 stripped
 Transform:
@@ -3226,7 +3340,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &4137209148455199201 stripped
 Transform:
@@ -3296,7 +3411,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059290357326872 stripped
 Transform:
@@ -3366,7 +3482,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059291175809050 stripped
 Transform:
@@ -3436,7 +3553,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059291089613161 stripped
 Transform:
@@ -3498,7 +3616,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &4137209147554629487 stripped
 Transform:
@@ -3560,7 +3679,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &4137209148017885651 stripped
 Transform:
@@ -3630,7 +3750,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059291006342532 stripped
 Transform:
@@ -3700,7 +3821,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059290957826588 stripped
 Transform:
@@ -3770,7 +3892,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &2441059290945310157 stripped
 Transform:
@@ -3844,7 +3967,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bench (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6948231632422015820, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
 --- !u!4 &3806169778067912810 stripped
 Transform:
@@ -3906,7 +4030,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bench
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6948231632422015820, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d576757cb3cfc4b06bd96250b230a977, type: 3}
 --- !u!4 &2441059290700580917 stripped
 Transform:
@@ -4066,9 +4191,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
---- !u!4 &1319364927 stripped
+--- !u!4 &730902541 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3669508866299544680, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3669508866885623130, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
   m_PrefabInstance: {fileID: 3669508867262098775}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1438237079 stripped
@@ -4076,9 +4201,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3669508865846963392, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
   m_PrefabInstance: {fileID: 3669508867262098775}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &730902541 stripped
+--- !u!4 &1319364927 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 3669508866885623130, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3669508866299544680, guid: 2baf55052d4584b9c9cdd3515640c84e, type: 3}
   m_PrefabInstance: {fileID: 3669508867262098775}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5794257198706955019
@@ -4136,7 +4261,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8457560648698328826, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48137360ad90d4433ad6af9701fa1d4b, type: 3}
 --- !u!4 &8181127667136363707 stripped
 Transform:
@@ -4202,7 +4328,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Couch
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9190446399896939247, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d539fb11cf59d4f4bb349528e5fd1c48, type: 3}
 --- !u!4 &9030211940398313554 stripped
 Transform:
@@ -4264,7 +4391,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lamp
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7914365135599175734, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd31e37f8d9b24cb9af2546cf2dc6e2a, type: 3}
 --- !u!4 &6840648311626395765 stripped
 Transform:
