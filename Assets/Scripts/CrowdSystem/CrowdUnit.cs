@@ -107,6 +107,7 @@ public class CrowdUnit : MonoBehaviour
             if (isDropper && !alreadyDropped)
             {
                 droppedItem = Instantiate<Item>(itemPrefab);
+                droppedItem.spriteRenderer.color = spriteRenderer.color;
                 droppedItem.drop(gameObject);
                 alreadyDropped = true;
             }
