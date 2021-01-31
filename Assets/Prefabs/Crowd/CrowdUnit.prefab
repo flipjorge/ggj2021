@@ -196,6 +196,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   spriteRenderer: {fileID: 0}
   rigidbody: {fileID: 0}
+  nextItemReference: {fileID: 11400000, guid: 7e80d808cd4394ee98598c7e6ef5e887, type: 2}
 --- !u!136 &7090632905780363665
 CapsuleCollider:
   m_ObjectHideFlags: 0

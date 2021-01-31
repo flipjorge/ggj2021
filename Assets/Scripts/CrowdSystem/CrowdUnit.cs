@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
@@ -29,12 +30,16 @@ public class CrowdUnit : MonoBehaviour
     [HideInInspector] public SpriteRenderer spriteRenderer;
     [HideInInspector] public new Rigidbody rigidbody;
 
+    public ItemReference nextItemReference;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rigidbody = GetComponent<Rigidbody>();
+
+        nextItemReference.onValueChanged += _nextItemChanged;
     }
 
     private void Start()
@@ -129,9 +134,24 @@ public class CrowdUnit : MonoBehaviour
     {
         StopCoroutine(routine);
 
-        if(droppedItem != null)
+        if (droppedItem != null)
         {
             droppedItem.GetComponent<Item>().ownerLeaving();
+        }
+
+        nextItemReference.onValueChanged -= _nextItemChanged;
+    }
+
+    private void _nextItemChanged(Item obj)
+    {
+        if (obj != null && droppedItem == obj)
+        {
+            transform.DOShakeScale(999);
+        }
+        else
+        {
+            transform.DOKill();
+            transform.localScale = Vector3.one;
         }
     }
 }

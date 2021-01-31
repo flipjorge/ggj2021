@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5714dcc9fbbd4800a7a173165c3bb48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useUpdate: 0
 --- !u!95 &3689923951486072047
 Animator:
   serializedVersion: 3
@@ -159,6 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LeaderTrail: []
+  maxTrailSize: 5
+  nextItemReference: {fileID: 11400000, guid: 7e80d808cd4394ee98598c7e6ef5e887, type: 2}
 --- !u!1 &6936165733938946428
 GameObject:
   m_ObjectHideFlags: 0
