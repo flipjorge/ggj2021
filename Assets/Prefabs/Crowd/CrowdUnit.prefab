@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 793631615784284608}
   - component: {fileID: 6417549465859033212}
   - component: {fileID: 7793963483801137484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: -7399345178954541422}
   - component: {fileID: 7090632905780363665}
   - component: {fileID: -2900909814134067243}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CrowdUnit
   m_TagString: NPC
   m_Icon: {fileID: 0}
