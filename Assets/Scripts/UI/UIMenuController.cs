@@ -32,9 +32,8 @@ public class UIMenuController : MonoBehaviour
 
     private void Update()
     {
-        if (!gameStarted && Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            gameStarted = true;
             StartGame();
         }
     }
@@ -56,6 +55,10 @@ public class UIMenuController : MonoBehaviour
 
     public void StartGame()
     {
+        if (gameStarted)
+            return;
+
+        gameStarted = true;
         DOTween.Kill(seq);
         DOTween.Kill("seq");
         seq2 = DOTween.Sequence();
