@@ -1,10 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // Must be attached to Player object
 public class PlayerTrail : MonoBehaviour
 {
     public List<GameObject> LeaderTrail;
+    public int maxTrailSize = 5;
+    public ItemReference nextItemReference;
 
     private void Start()
     {
@@ -15,6 +18,9 @@ public class PlayerTrail : MonoBehaviour
     {
         LeaderTrail.Add(item.gameObject);
         item.startFollowing(this);
+
+        //update next item
+        if (LeaderTrail.Count == 1) nextItemReference.Value = item;
     }
 
     public void deliverFirst()
@@ -25,6 +31,9 @@ public class PlayerTrail : MonoBehaviour
             first.GetComponent<Item>().delivered = true;
             LeaderTrail.Remove(first);
             Destroy(first);
+
+            //update next item
+            nextItemReference.Value = LeaderTrail.FirstOrDefault()?.GetComponent<Item>() ?? null;
         }
     }
 

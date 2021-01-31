@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CrowdSettings
   m_EditorClassIdentifier: 
   _spawnRate: 5
+  _maxUnits: 15
   _unitBehaviors:
   - chanceOfCheckingStore: 0.5
     stopsAtDestinationBeforeContinue: 1
