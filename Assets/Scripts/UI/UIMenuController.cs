@@ -23,6 +23,8 @@ public class UIMenuController : MonoBehaviour
     Sequence seq;
     Sequence seq2;
 
+    private bool gameStarted = false;
+
     void Start()
     {
         titleSection.DOFade(1f, 1.5f).OnComplete(OnTitleFaded);
@@ -30,8 +32,9 @@ public class UIMenuController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (!gameStarted && Input.GetKeyUp(KeyCode.Space))
         {
+            gameStarted = true;
             StartGame();
         }
     }
