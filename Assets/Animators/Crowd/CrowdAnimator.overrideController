@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CrowdAnimator
+  m_Controller: {fileID: 9100000, guid: 00f5aaef5cc1d4b8480adf0e7e8abadc, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 07e205ca2cd8a4c6a8c9330b8802119a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a08f184ec832c4e6288c5df2c2484506, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d902ec4f5e0ec4dfeb900e321fe0939b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d902ec4f5e0ec4dfeb900e321fe0939b, type: 2}

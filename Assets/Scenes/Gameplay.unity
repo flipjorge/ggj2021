@@ -1705,6 +1705,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1015824477, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 148124405092882940, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1749,29 +1753,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5725951988599811278, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6519508822877492540, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
-      propertyPath: m_Height
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6519508822877492540, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
-      propertyPath: m_Radius
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6519508822877492540, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
-      propertyPath: m_Center.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7985806468908470922, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8666252819685968911, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
-      propertyPath: velocity
-      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}

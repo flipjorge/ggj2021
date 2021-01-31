@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class CrowdUnit : MonoBehaviour
 {
+    private CrowdSystem crowdSystem;
+
     [SerializeField]
     private Item itemPrefab;
 
@@ -23,11 +26,24 @@ public class CrowdUnit : MonoBehaviour
 
     private Coroutine routine;
 
+    private bool isDropper;
+    private bool alreadyDropped;
     private Item droppedItem;
+
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public SpriteRenderer spriteRenderer;
+    [HideInInspector] public new Rigidbody rigidbody;
+
+    public ItemReference nextItemReference;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        rigidbody = GetComponent<Rigidbody>();
+
+        nextItemReference.onValueChanged += _nextItemChanged;
     }
 
     private void Start()
@@ -35,13 +51,33 @@ public class CrowdUnit : MonoBehaviour
         agent.destination = walkableSurface.Value.center;
 
         routine = StartCoroutine(WalkAroundEnumerator());
+
+        var random = Random.Range(0f, 1f);
+        isDropper = random < unitBehavior.chanceOfDroppingItem;
     }
 
-    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior)
+    private void Update()
+    {
+        //set animator velocity parameter
+        animator.SetFloat("velocity", agent.velocity.magnitude);
+
+        //set sprite direction
+        if (!spriteRenderer.flipX && agent.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (spriteRenderer.flipX && agent.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+    }
+
+    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior, CrowdSystem crowdSystem)
     {
         this.spawnPoints = spawnPoints;
         this.playableArea = playableArea;
         this.unitBehavior = unitBehavior;
+        this.crowdSystem = crowdSystem;
 
         agent.speed = unitBehavior.unitSpeed;
     }
@@ -58,13 +94,6 @@ public class CrowdUnit : MonoBehaviour
         {
             agent.destination = PickRandomPositionInsidePlayableAre();
 
-            var random = Random.Range(0f, 1f);
-            if (random < unitBehavior.chanceOfDroppingItem && droppedItem == null)
-            {
-                droppedItem = Instantiate<Item>(itemPrefab);
-                droppedItem.drop(gameObject);
-            }
-
             if (unitBehavior.stopsAtDestinationBeforeContinue)
             {
                 while (!HasArrivedToDestination())
@@ -74,6 +103,13 @@ public class CrowdUnit : MonoBehaviour
             }
 
             yield return Wait(unitBehavior.intervalBetweenDestinationChange);
+
+            if (isDropper && !alreadyDropped)
+            {
+                droppedItem = Instantiate<Item>(itemPrefab);
+                droppedItem.drop(gameObject);
+                alreadyDropped = true;
+            }
         }
 
         agent.destination = spawnPoints.PickRandom().transform.position;
@@ -84,7 +120,7 @@ public class CrowdUnit : MonoBehaviour
         }
 
         //unit left the building
-
+        crowdSystem.spawnedUnits--;
         Destroy(this.gameObject);
     }
 
@@ -106,9 +142,26 @@ public class CrowdUnit : MonoBehaviour
     {
         StopCoroutine(routine);
 
-        if(droppedItem != null)
+        if (droppedItem != null)
         {
-            droppedItem.GetComponent<Item>().ownerLeaving();
+            droppedItem.ownerLeaving();
+        }
+
+        nextItemReference.onValueChanged -= _nextItemChanged;
+
+        transform.DOKill();
+    }
+
+    private void _nextItemChanged(Item obj)
+    {
+        if (obj != null && droppedItem == obj)
+        {
+            transform.DOShakeScale(999);
+        }
+        else
+        {
+            transform.DOKill();
+            transform.localScale = Vector3.one;
         }
     }
 }
