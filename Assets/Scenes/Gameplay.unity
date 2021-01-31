@@ -646,6 +646,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 5835088411489324330, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_TileSize
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835088411489324330, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_VoxelSize
+      value: 0.29666665
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835088411489324330, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: a61423c649f5e44698247f7a2837e7f2, type: 2}
+    - target: {fileID: 5835088411489324330, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_OverrideTileSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835088411489324330, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
+      propertyPath: m_OverrideVoxelSize
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
 --- !u!1 &1730237038
