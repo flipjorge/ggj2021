@@ -366,10 +366,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 247659950, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
-      propertyPath: m_TagString
-      value: Balcony
-      objectReference: {fileID: 0}
     - target: {fileID: 5835088411289651521, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -418,10 +414,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
-    - target: {fileID: 5835088411573508699, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2301111c2c4374d339fb59ecf170ff8a, type: 3}
 --- !u!1001 &1966346395
@@ -434,6 +426,10 @@ PrefabInstance:
     - target: {fileID: 1015824477, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
       propertyPath: m_Constraints
       value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306332870, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1306332872, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
       propertyPath: m_Color.b
@@ -494,6 +490,10 @@ PrefabInstance:
     - target: {fileID: 7985806468908470922, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7985806468908470922, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ffa8a2a987649eea461cc9f6aa3d15, type: 3}
