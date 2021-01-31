@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class CrowdUnit : MonoBehaviour
 {
+    private CrowdSystem crowdSystem;
+
     [SerializeField]
     private Item itemPrefab;
 
@@ -24,6 +26,8 @@ public class CrowdUnit : MonoBehaviour
 
     private Coroutine routine;
 
+    private bool isDropper;
+    private bool alreadyDropped;
     private Item droppedItem;
 
     [HideInInspector] public Animator animator;
@@ -47,6 +51,9 @@ public class CrowdUnit : MonoBehaviour
         agent.destination = walkableSurface.Value.center;
 
         routine = StartCoroutine(WalkAroundEnumerator());
+
+        var random = Random.Range(0f, 1f);
+        isDropper = random < unitBehavior.chanceOfDroppingItem;
     }
 
     private void Update()
@@ -65,11 +72,12 @@ public class CrowdUnit : MonoBehaviour
         }
     }
 
-    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior)
+    public void Setup(Bounds playableArea, CrowdSpawnPoint[] spawnPoints, UnitBehavior unitBehavior, CrowdSystem crowdSystem)
     {
         this.spawnPoints = spawnPoints;
         this.playableArea = playableArea;
         this.unitBehavior = unitBehavior;
+        this.crowdSystem = crowdSystem;
 
         agent.speed = unitBehavior.unitSpeed;
     }
@@ -86,13 +94,6 @@ public class CrowdUnit : MonoBehaviour
         {
             agent.destination = PickRandomPositionInsidePlayableAre();
 
-            var random = Random.Range(0f, 1f);
-            if (random < unitBehavior.chanceOfDroppingItem && droppedItem == null)
-            {
-                droppedItem = Instantiate<Item>(itemPrefab);
-                droppedItem.drop(gameObject);
-            }
-
             if (unitBehavior.stopsAtDestinationBeforeContinue)
             {
                 while (!HasArrivedToDestination())
@@ -102,6 +103,13 @@ public class CrowdUnit : MonoBehaviour
             }
 
             yield return Wait(unitBehavior.intervalBetweenDestinationChange);
+
+            if (isDropper && !alreadyDropped)
+            {
+                droppedItem = Instantiate<Item>(itemPrefab);
+                droppedItem.drop(gameObject);
+                alreadyDropped = true;
+            }
         }
 
         agent.destination = spawnPoints.PickRandom().transform.position;
@@ -112,7 +120,7 @@ public class CrowdUnit : MonoBehaviour
         }
 
         //unit left the building
-
+        crowdSystem.spawnedUnits--;
         Destroy(this.gameObject);
     }
 
@@ -136,7 +144,7 @@ public class CrowdUnit : MonoBehaviour
 
         if (droppedItem != null)
         {
-            droppedItem.GetComponent<Item>().ownerLeaving();
+            droppedItem.ownerLeaving();
         }
 
         nextItemReference.onValueChanged -= _nextItemChanged;
